@@ -55,7 +55,7 @@ namespace Personal_Page.Controllers
             };
             ViewBag.succes = "اطلاعات  با موفقیت  ثبت شد";
             return View(formContact);
-            // return RedirectToAction("Index");
+              // return RedirectToAction("Index");
         }
         // [HttpPost]
         // // public JsonResult Contact(IFormCollection form)
