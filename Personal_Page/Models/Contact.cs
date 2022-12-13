@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Personal_Page.Models
 {
@@ -11,8 +12,9 @@ namespace Personal_Page.Models
         [Required(ErrorMessage = "این فیلد اجباری است")]
         [EmailAddress(ErrorMessage = "ایمیل را به درستی وارد  نکرده  اید")]
         public string Email { get; set; }
-        public string Service { get; set; }
+        public int Service { get; set; }
         public string Message { get; set; }
+        public SelectList Services { get; set; }
          
     }
 }

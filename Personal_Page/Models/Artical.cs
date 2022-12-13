@@ -14,5 +14,9 @@
             Description = description;
             Image = image;   
         }
+
+        public Artical()
+        {
+        }
     }
 }

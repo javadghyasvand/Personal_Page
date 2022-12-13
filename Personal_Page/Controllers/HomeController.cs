@@ -1,17 +1,25 @@
-﻿                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            using System;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
 using Personal_Page.Models;
 using System.Diagnostics;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            namespace Personal_Page.Controllers
+namespace Personal_Page.Controllers
 {
     public class HomeController : Controller
     {
-	    
+        private readonly List<Services> ServiceObjects = new List<Services>
+        {
+            new Services() { ID = 1, Name = "نقره ای" },
+            new Services() { ID = 2, Name = "طلایی" },
+            new Services() { ID = 3, Name = "پلاتین" },
+            new Services() { ID = 4, Name = "الماس" }
+        };
+
         public HomeController()
         {
-  
         }
 
         public IActionResult Index()
@@ -22,24 +30,32 @@ using System.Diagnostics;
         [HttpGet]
         public IActionResult Contact()
         {
-            var model =new Contact();
-	        return View(model);
+            var model = new Contact()
+            {
+                Services = new SelectList(ServiceObjects, "ID", "Name")
+            };
+            return View(model);
         }
 
         [HttpPost]
         public IActionResult Contact(Contact formContact)
         {
-           // if(ModelState.IsValid==false)
-           if (!ModelState.IsValid)
-           {
-               ViewBag.error= "اطلاعات وارد شده صحیح نیست  .لطفا مجدد تلاس کنید ";
-               return View(formContact);
-           }
-
-           ViewBag.succes= "اطلاعات  با موفقیت  ثبت شد";
-           return View();
-           // return RedirectToAction("Index");
-
+            formContact.Services = new SelectList(ServiceObjects, "ID", "Name");
+            // if(ModelState.IsValid==false)
+         
+            if (!ModelState.IsValid)
+            {
+                ViewBag.error = "اطلاعات وارد شده صحیح نیست  .لطفا مجدد تلاش کنید ";
+                return View(formContact);
+            }
+            ModelState.Clear();
+            formContact = new Contact
+            {
+                Services = new SelectList(ServiceObjects, "ID", "Name")
+            };
+            ViewBag.succes = "اطلاعات  با موفقیت  ثبت شد";
+            return View(formContact);
+            // return RedirectToAction("Index");
         }
         // [HttpPost]
         // // public JsonResult Contact(IFormCollection form)
@@ -49,9 +65,6 @@ using System.Diagnostics;
         // //     var service = form["service"];
         // //     return Json(Ok());
         // // }
-
-
-
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
