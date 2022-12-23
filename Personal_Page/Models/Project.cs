@@ -20,19 +20,4 @@ namespace Personal_Page.Models
 			Image = image;
 		}
 	}
-
-	
-
-	// public class Article
-	// {
-	// 	public long Id { get; set; }
-	// 	public string title { get; set; }
-	// 	public string Description { get; set; }
-	// }
-	//
-	// public class IndexModel
-	// {
-	// 	public List<Project> Projects { get; set; }
-	// 	public List<Article> Articles { get; set; }
-	// }
 }
