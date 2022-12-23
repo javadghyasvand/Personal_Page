@@ -9,7 +9,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Home\DietalesResult.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Home\Project.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Home\DietalesResult.cshtml" />
   </ItemGroup>
 
 </Project>

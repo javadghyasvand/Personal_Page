@@ -94,3 +94,4 @@ D:\Source\ASP\Personal_Page\Personal_Page\obj\Debug\net5.0\Personal_Page.pdb
 D:\Source\ASP\Personal_Page\Personal_Page\obj\Debug\net5.0\Personal_Page.genruntimeconfig.cache
 D:\Source\ASP\Personal_Page\Personal_Page\obj\Debug\net5.0\ref\Personal_Page.dll
 D:\Source\ASP\Personal_Page\Personal_Page\obj\Debug\net5.0\Personal_Page.csproj.CopyComplete
+D:\Source\ASP\Personal_Page\Personal_Page\obj\Debug\net5.0\Razor\Views\Home\DietalesResult.cshtml.g.cs

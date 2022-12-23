@@ -5,9 +5,11 @@ using Personal_Page.Models;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Personal_Page.Data;
 
 namespace Personal_Page.Controllers
 {
+    // [Route("/invertoty/products/")]
     public class HomeController : Controller
     {
         private readonly List<Services> ServiceObjects = new List<Services>
@@ -18,15 +20,14 @@ namespace Personal_Page.Controllers
             new Services() { ID = 4, Name = "الماس" }
         };
 
-        public HomeController()
-        {
-        }
-
+        // [Route("MyIndex/{name?}")]
         public IActionResult Index()
         {
             return View();
         }
 
+        // [HttpGet("MyContact")]
+        // [Route("MyContact")]
         [HttpGet]
         public IActionResult Contact()
         {
@@ -56,6 +57,12 @@ namespace Personal_Page.Controllers
             ViewBag.succes = "اطلاعات  با موفقیت  ثبت شد";
             return View(formContact);
               // return RedirectToAction("Index");
+        }
+
+        public IActionResult DietalesResult(long id)
+        {
+            var project = Project_Store.GetProjectBy(id);
+            return View(project);
         }
         // [HttpPost]
         // // public JsonResult Contact(IFormCollection form)
